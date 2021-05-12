@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require('./database/routes');
+let routes = require('./database/routes');
 
 const app = express();
 app.use(express.json()) //aqui ele vai receber o body no tipo json la no post
