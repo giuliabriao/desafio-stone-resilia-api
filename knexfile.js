@@ -16,10 +16,10 @@ module.exports = {
       directory: `${__dirname}/src/database/seeds` //a seeds nós usamos para popular o banco  
     }
   },
-  // onUpdateTrigger: table => `
-  //   CREATE TRIGGER ${table}_updated_at
-  //   BEFORE UPDATE ON ${table}
-  //   FOR EACH ROW
-  //   EXECUTE PROCEDURE on_update_timestamp()
-  //   `
+  onUpdateTrigger: table => `
+    CREATE TRIGGER ${table}_updated_at
+    BEFORE UPDATE ON ${table}
+    FOR EACH ROW
+    EXECUTE PROCEDURE on_update_timestamp()
+    `
 };
