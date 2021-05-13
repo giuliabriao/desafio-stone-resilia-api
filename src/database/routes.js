@@ -10,4 +10,6 @@ routes
     .put('/user/:id', UserController.update)
     .delete('/user/:id', UserController.delete)
 
+    .get('/projects', ProjectController.index)
+
 module.exports = routes
