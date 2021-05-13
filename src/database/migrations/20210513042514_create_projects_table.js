@@ -1,4 +1,3 @@
-const { onUpdateTrigger } = require('../../../knexfile')
 
 exports.up = async knex => knex.schema.createTable('projects', table => {
     table.increments('id')
@@ -6,11 +5,11 @@ exports.up = async knex => knex.schema.createTable('projects', table => {
     table.text('description').notNullable()
     table.text('category').notNullable()
     table.string('image')
-    table.string('valuetion')
+    table.integer('valuetion')
     table.string('address')
-    table.text('goal').notNullable()
-    table.text('balance').notNullable()
-    table.date('account').unique().notNullable()
+    table.integer('goal').notNullable()
+    table.integer('balance').notNullable()
+    table.string('account').unique().notNullable()
     
     //relations
     table.integer('user_id')
@@ -18,9 +17,8 @@ exports.up = async knex => knex.schema.createTable('projects', table => {
         .notNullable()
         .onDelete('CASCADE')
     
-    table.timestamp('created_at').defaultTo(knex.fn.now())
-    table.timestamp('updated_at').defaultTo(knex.fn.now())
-}).then( () => knex.raw(onUpdateTrigger('projects')))
-
+    table.timestamp(true, true)
+    
+})
 
 exports.down = async knex => knex.schema.dropTable('projects')
