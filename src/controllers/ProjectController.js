@@ -12,35 +12,43 @@ module.exports = {
     },
 
 
-    /* async create(req, res, next) {
+     async create(req, res, next) {
 
         try {
             const {
-                firstName,
-                lastName,
-                username,
-                avatar,
-                email,
-                birth,
-                password
+                title,
+                description,
+                category,
+                image,
+                valuetion,
+                address,
+                goal,
+                balance,
+                date_limit,
+                account,
+                user_id
             } = req.body
 
-            const passwordHash = await bcrypt.hash(password, 8)
-
-            await knex('users').insert({
-                firstName,
-                lastName,
-                username,
-                avatar,
-                email,
-                birth,
-                password: passwordHash
+            await knex('projects').insert({
+                title,
+                description,
+                category,
+                image,
+                valuetion,
+                address,
+                goal,
+                balance,
+                date_limit,
+                account,
+                user_id
             });
             return res.status(201).send()
         } catch (error) {
             next(error)
         }
     },
+
+
     async update(req, res, next) {
         try {
             const {
@@ -86,5 +94,5 @@ module.exports = {
         } catch (error) {
             next(error)
         }
-    } */
+    } 
 }
