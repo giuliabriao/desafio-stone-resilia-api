@@ -92,10 +92,11 @@ module.exports = {
     async delete(req, res, next) {
         try {
             const { id } = req.params
-
+            
             await knex('projects')
-                .where({ id })
-                .update("deleted_at", new Date())
+            .where({ id })
+            .update("deleted_at", new Date())
+                
                 
             return res.send()
         } catch (error) {
