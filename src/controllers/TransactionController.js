@@ -2,13 +2,14 @@ const knex = require('../database');
 
 module.exports = {
 
+    // List transaction
     async index(req, res) {
         const results = await knex('transacion')
         return res.json(results)
         //temos que esconder o password do GET
     },
     
-    
+    // Create transactions
     async create(req, res, next) {
 
         try {
