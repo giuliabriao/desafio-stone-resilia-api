@@ -9,6 +9,7 @@ exports.up = async knex => knex.schema.createTable('projects', table => {
     table.string('address')
     table.integer('goal').notNullable()
     table.integer('balance').notNullable()
+    table.date('date_limit').notNullable()
     table.string('account').unique().notNullable()
     
     //relations

@@ -14,7 +14,8 @@ exports.seed = function(knex) {
           address:"Brasil",
           goal: 10000,
           balance: 0,
-          account: "6y3t6etyw63tw6wte"
+          account: "6y3t6etyw63tw6wte",
+          date_limit: "08/10/2021"
         }
       ]);
     });
