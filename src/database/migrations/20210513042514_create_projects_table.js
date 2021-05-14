@@ -6,7 +6,7 @@ exports.up = async knex => knex.schema.createTable('projects', table => {
     table.text('description').notNullable()
     table.text('category').notNullable()
     table.string('image')
-    table.integer('valuetion')
+    table.integer('valuation')
     table.string('address')
     table.integer('goal').notNullable()
     table.integer('balance').notNullable()
@@ -19,7 +19,9 @@ exports.up = async knex => knex.schema.createTable('projects', table => {
         .notNullable()
         .onDelete('CASCADE')
     
-    table.timestamp(true, true)
+    table.timestamp('created_at').defaultTo(knex.fn.now())
+    table.timestamp('updated_at').defaultTo(knex.fn.now())
+    
     
 }).then( () => knex.raw(onUpdateTrigger('projects')))
 

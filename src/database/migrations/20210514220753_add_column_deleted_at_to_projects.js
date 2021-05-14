@@ -1,4 +1,3 @@
-
 exports.up = knex => knex.schema.alterTable('projects', table => {
     table.timestamp("deleted_at")
   })
