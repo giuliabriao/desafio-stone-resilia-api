@@ -2,6 +2,7 @@ const knex = require('../database');
 
 module.exports = {
 
+    //List projects
     async index(req, res, next) {
         try {
             const results = await knex('projects')
@@ -11,7 +12,7 @@ module.exports = {
         }
     },
 
-
+    //Create Projects
      async create(req, res, next) {
 
         try {
@@ -48,32 +49,36 @@ module.exports = {
         }
     },
 
-
+    //Update projects
     async update(req, res, next) {
         try {
             const {
-                firstName,
-                lastName,
-                username,
-                avatar,
-                email,
-                birth,
-                password
+                title,
+                description,
+                category,
+                image,
+                valuetion,
+                address,
+                goal,
+                balance,
+                date_limit,
+                account, 
             } = req.body
-
-            const passwordHash = await bcrypt.hash(password, 8)
 
             const { id } = req.params
 
-            await knex('users')
+            await knex('projects')
                 .update({
-                    firstName,
-                    lastName,
-                    username,
-                    avatar,
-                    email,
-                    birth,
-                    password: passwordHash
+                    title,
+                    description,
+                    category,
+                    image,
+                    valuetion,
+                    address,
+                    goal,
+                    balance,
+                    date_limit,
+                    account,
                 })
                 .where({ id })
 
@@ -82,11 +87,13 @@ module.exports = {
             next(error)
         }
     },
+
+    //Delete Projects
     async delete(req, res, next) {
         try {
             const { id } = req.params
 
-            await knex('users')
+            await knex('projects')
                 .where({ id })
                 .update("deleted_at", new Date())
                 
