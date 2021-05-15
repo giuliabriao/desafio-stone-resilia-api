@@ -7,7 +7,7 @@ exports.up = async knex => knex.schema.createTable('users', table => {
     table.text('username').unique().notNullable()
     table.string('avatar')
     table.text('email').unique().notNullable()
-    table.date('birth').unique().notNullable()
+    table.date('birth').notNullable()
     table.string('password').notNullable()
 
     
