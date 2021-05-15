@@ -20,6 +20,15 @@ module.exports = {
                 receptor,
             } = req.body
 
+            await knex('projects')
+                .where('id', receptor)
+                .increment("balance", value)
+
+            await knex('users')
+                .where('id', sender)
+                .decrement("balance", value)
+                
+
             await knex('transacion').insert({
                 value,
                 date,
