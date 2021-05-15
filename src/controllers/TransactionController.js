@@ -28,7 +28,6 @@ module.exports = {
                 .where('id', sender)
                 .decrement("balance", value)
                 
-
             await knex('transacion').insert({
                 value,
                 date,
