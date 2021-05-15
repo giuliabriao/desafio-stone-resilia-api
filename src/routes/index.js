@@ -5,7 +5,6 @@ const usersRoutes = require('./users');
 const projectsRoutes = require('./projects');
 const transactionsRoutes = require('./transaction');
 
-//routes
 routes.use('/users', usersRoutes);
 routes.use('/projects', projectsRoutes);
 routes.use('/transacions', transactionsRoutes);
