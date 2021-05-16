@@ -1,12 +1,16 @@
 const knex = require('../database');
+const listProjects = require('../services/projects/ListProjectsService');
+const createProject = require('../services/projects/CreateProjectsService');
+const updateProject = require('../services/projects/UpdateProject');
+const deleteProjectService = require('../services/projects/DeleteProjectService');
 
 module.exports = {
 
     //List projects
     async index(req, res, next) {
         try {
-            const results = await knex('projects')
-            return res.json(results)
+            const projects = await listProjects.index()
+            return res.json(projects)
         } catch (error) {
             next(error)
         }
@@ -29,20 +33,21 @@ module.exports = {
                 account,
                 user_id
             } = req.body
-
-            await knex('projects').insert({
-                title,
-                description,
-                category,
-                image,
-                valuetion,
-                address,
-                goal,
-                balance,
-                date_limit,
-                account,
-                user_id
-            });
+            
+            await createProject.create({
+              title,
+              description,
+              category,
+              image,
+              valuetion,
+              address,
+              goal,
+              balance,
+              date_limit,
+              account,
+              user_id
+            })
+            
             return res.status(201).send()
         } catch (error) {
             next(error)
@@ -67,8 +72,7 @@ module.exports = {
 
             const { id } = req.params
 
-            await knex('projects')
-                .update({
+            await updateProject.update({
                     title,
                     description,
                     category,
@@ -79,8 +83,8 @@ module.exports = {
                     balance,
                     date_limit,
                     account,
+                    id
                 })
-                .where({ id })
 
             return res.send()
         } catch (error) {
@@ -93,9 +97,7 @@ module.exports = {
         try {
             const { id } = req.params
             
-            await knex('projects')
-                .where({ id })
-                .update("deleted_at", new Date())
+            await deleteProjectService.delete({ id })
              
             return res.send()
         } catch (error) {
