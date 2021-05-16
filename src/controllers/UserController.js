@@ -1,5 +1,3 @@
-const knex = require('../database');
-
 const createUser = require('../services/users/CreateUserService');
 const listUser = require('../services/users/ListUserService');
 const updateUser = require('../services/users/UpdateUserService');
@@ -7,7 +5,6 @@ const deleteUser = require('../services/users/DeleteUsers');
 
 
 module.exports = {
-
 
     async index(req, res, next) {
         try {
