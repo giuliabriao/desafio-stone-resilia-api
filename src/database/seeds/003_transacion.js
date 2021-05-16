@@ -8,8 +8,8 @@ exports.seed = function(knex) {
         {
           value:100.00,
           date:"07/01/1998",
-          sender:7,
-          receptor:1,
+          sender:6,
+          receptor:4,
         }
       ]);
     });

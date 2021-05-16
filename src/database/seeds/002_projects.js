@@ -5,12 +5,12 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('projects').insert([
         {
-          user_id: 7,
+          user_id: 6,
           title: "Investe em mim",
           description: "Projeto resilia + stone",
           category:"startup",
           image: "",
-          valuetion:100000,
+          valuation:100000,
           address:"Brasil",
           goal: 10000,
           balance: 0,
