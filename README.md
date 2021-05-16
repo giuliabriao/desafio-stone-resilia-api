@@ -8,17 +8,17 @@
      * [Sessions](#Sessions)
    * [Techs](#Techs)
 <!--te-->
-<p>________________________________________________________________________________________________________________________</p>
+
 # ⚙️ Requirements
 
 - [Git](https://git-scm.com/) installed
 - [Node](https://node.js.org/) installed
 - [PostegreSQL](https://www.postgresql.org/) installed
 - Npm or [Yarn](https://yarnpkg.com/) installed
-<p>________________________________________________________________________________________________________________________</p>
+
 # 📦 Install dependencies
 - Run `npm install` or `yarn install`.
-<p>________________________________________________________________________________________________________________________</p>
+
 # 🔨 Usage
 - Run `npm start` or `yarn start`.
 - Base URL: https://localhost:3333
@@ -71,7 +71,7 @@ Body
 `Path: /users/user-id`
 Method: [DELETE]
 
-<p>________________________________________________________________________________________________________________________</p>
+
 
 # 🗄 Projects
 ### Features
@@ -127,7 +127,7 @@ Body
 Method: [DELETE]
 
 
-<p>________________________________________________________________________________________________________________________</p>
+
 
 # 💰 Transactions
 ### Features
