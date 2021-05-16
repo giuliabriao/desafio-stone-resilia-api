@@ -1,14 +1,24 @@
 const knex = require('../database');
-const bcrypt = require('bcrypt');
+
+const createUser = require('../services/users/CreateUserService');
+const listUser = require('../services/users/ListUserService');
+const updateUser = require('../services/users/UpdateUserService');
+const deleteUser = require('../services/users/DeleteUsers');
+
 
 module.exports = {
-    async index(req, res) {
-        const results = await knex('users')
-        // .where("deleted_at", null)
-        delete results.password
-        return res.json(results)
-        //temos que esconder o password do GET
+
+
+    async index(req, res, next) {
+        try {
+            const users = await listUser.index()
+            return res.json(users)
+        } catch (error) {
+            next(error)
+        }
     },
+
+
     async create(req, res, next) {
 
         try {
@@ -22,22 +32,22 @@ module.exports = {
                 password
             } = req.body
 
-            const passwordHash = await bcrypt.hash(password, 8)
-
-            await knex('users').insert({
+            createUser.create({
                 firstName,
                 lastName,
                 username,
                 avatar,
                 email,
                 birth,
-                password: passwordHash
-            });
+                password
+            })
             return res.status(201).send()
         } catch (error) {
             next(error)
         }
     },
+
+
     async update(req, res, next) {
         try {
             const {
@@ -50,34 +60,30 @@ module.exports = {
                 password
             } = req.body
 
-            const passwordHash = await bcrypt.hash(password, 8)
-
             const { id } = req.params
 
-            await knex('users')
-                .update({
-                    firstName,
-                    lastName,
-                    username,
-                    avatar,
-                    email,
-                    birth,
-                    password: passwordHash
-                })
-                .where({ id })
+            await updateUser.update({
+                firstName,
+                lastName,
+                username,
+                avatar,
+                email,
+                birth,
+                password,
+                id
+            })
 
             return res.send()
         } catch (error) {
             next(error)
         }
     },
+
+
     async delete(req, res, next) {
         try {
             const { id } = req.params
-
-            await knex('users')
-                .where({ id })
-                .update("deleted_at", new Date())
+            await deleteUser.delete({id})
                 
             return res.send()
         } catch (error) {

@@ -8,7 +8,6 @@ module.exports = {
         sender,
         receptor,
     }) {
-
         try {
             await knex('projects')
                 .where('id', receptor)
@@ -26,7 +25,7 @@ module.exports = {
             });
             return res.status(201).send()
         } catch (error) {
-            
+            return error
         }
     },
 
