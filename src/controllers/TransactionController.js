@@ -1,6 +1,6 @@
 
 const createTransaction = require('../services/transactions/CreateTransactionService');
-const listTransaction = require('../services/ListTransactionService');
+const listTransaction = require('../services/transactions/ListTransactionService');
 
 module.exports = {
 

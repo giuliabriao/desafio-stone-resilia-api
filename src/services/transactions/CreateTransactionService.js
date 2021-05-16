@@ -1,4 +1,4 @@
-const knex = require('../database');
+const knex = require('../../database');
 
 module.exports = {
 
@@ -26,7 +26,7 @@ module.exports = {
             });
             return res.status(201).send()
         } catch (error) {
-            next(error)
+            
         }
     },
 
