@@ -1,5 +1,5 @@
-const knex = require('../database');
-const createTransaction = require('../services/CreateTransactionService');
+
+const createTransaction = require('../services/transactions/CreateTransactionService');
 const listTransaction = require('../services/ListTransactionService');
 
 module.exports = {
