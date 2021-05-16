@@ -5,9 +5,13 @@ const listTransaction = require('../services/ListTransactionService');
 module.exports = {
 
     // List transaction
-    async index(req, res) {
-        const transactions = await listTransaction.index()
-        return res.json(transactions)
+    async index(req, res, next) {
+        try {
+            const transactions = await listTransaction.index()
+            return res.json(transactions)
+        } catch (error) {
+            next(error)
+        }
     },
     
     // Create transactions
