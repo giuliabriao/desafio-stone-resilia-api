@@ -151,3 +151,11 @@ Body
   "receptor":"3" // id project receptor
 }
 ```
+
+# Techs
+
+ - [Express](https://expressjs.com/pt-br/)
+ - [Knex](http://knexjs.org/) 
+ - [Bcrypt](https://www.npmjs.com/package/bcrypt)
+ - [JWT](https://jwt.io/)
+ - [JavaScript](https://www.javascript.com/)
