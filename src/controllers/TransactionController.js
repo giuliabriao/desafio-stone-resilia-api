@@ -1,12 +1,13 @@
 const knex = require('../database');
+const createTransaction = require('../services/CreateTransactionService');
+const listTransaction = require('../services/ListTransactionService');
 
 module.exports = {
 
     // List transaction
     async index(req, res) {
-        const results = await knex('transacion')
-        return res.json(results)
-        //temos que esconder o password do GET
+        const transactions = await listTransaction.index()
+        return res.json(transactions)
     },
     
     // Create transactions
@@ -20,20 +21,12 @@ module.exports = {
                 receptor,
             } = req.body
 
-            await knex('projects')
-                .where('id', receptor)
-                .increment("balance", value)
-
-            await knex('users')
-                .where('id', sender)
-                .decrement("balance", value)
-                
-            await knex('transacion').insert({
+           createTransaction.create({
                 value,
                 date,
                 sender,
                 receptor,
-            });
+           })
             return res.status(201).send()
         } catch (error) {
             next(error)
