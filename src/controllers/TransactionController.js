@@ -4,37 +4,37 @@ const listTransaction = require('../services/transactions/ListTransactionService
 
 module.exports = {
 
-    // List transaction
-    async index(req, res, next) {
-        try {
-            const transactions = await listTransaction.index()
-            return res.json(transactions)
-        } catch (error) {
-            next(error)
-        }
-    },
-    
-    // Create transactions
-    async create(req, res, next) {
+  // List transaction
+  async index(req, res, next) {
+    try {
+      const transactions = await listTransaction.index()
+      return res.json(transactions)
+    } catch (error) {
+      next(error)
+    }
+  },
 
-        try {
-            const {
-                value,
-                date,
-                sender,
-                receptor,
-            } = req.body
+  // Create transactions
+  async create(req, res, next) {
 
-           createTransaction.create({
-                value,
-                date,
-                sender,
-                receptor,
-           })
-            return res.status(201).send()
-        } catch (error) {
-            next(error)
-        }
-    },
+    try {
+      const {
+        value,
+        date,
+        sender,
+        receptor,
+      } = req.body
+
+      createTransaction.create({
+        value,
+        date,
+        sender,
+        receptor,
+      })
+      return res.status(201).send()
+    } catch (error) {
+      next(error)
+    }
+  },
 
 }

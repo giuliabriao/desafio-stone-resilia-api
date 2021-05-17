@@ -6,102 +6,102 @@ const deleteProjectService = require('../services/projects/DeleteProjectService'
 
 module.exports = {
 
-    //List projects
-    async index(req, res, next) {
-        try {
-            const projects = await listProjects.index()
-            return res.json(projects)
-        } catch (error) {
-            next(error)
-        }
-    },
+  //List projects
+  async index(req, res, next) {
+    try {
+      const projects = await listProjects.index()
+      return res.json(projects)
+    } catch (error) {
+      next(error)
+    }
+  },
 
-    //Create Projects
-     async create(req, res, next) {
+  //Create Projects
+  async create(req, res, next) {
 
-        try {
-            const {
-                title,
-                description,
-                category,
-                image,
-                valuetion,
-                address,
-                goal,
-                balance,
-                date_limit,
-                account,
-                user_id
-            } = req.body
-            
-            await createProject.create({
-              title,
-              description,
-              category,
-              image,
-              valuetion,
-              address,
-              goal,
-              balance,
-              date_limit,
-              account,
-              user_id
-            })
-            
-            return res.status(201).send()
-        } catch (error) {
-            next(error)
-        }
-    },
+    try {
+      const {
+        title,
+        description,
+        category,
+        image,
+        valuetion,
+        address,
+        goal,
+        balance,
+        date_limit,
+        account,
+        user_id
+      } = req.body
 
-    //Update projects
-    async update(req, res, next) {
-        try {
-            const {
-                title,
-                description,
-                category,
-                image,
-                valuetion,
-                address,
-                goal,
-                balance,
-                date_limit,
-                account, 
-            } = req.body
+      await createProject.create({
+        title,
+        description,
+        category,
+        image,
+        valuetion,
+        address,
+        goal,
+        balance,
+        date_limit,
+        account,
+        user_id
+      })
 
-            const { id } = req.params
+      return res.status(201).send()
+    } catch (error) {
+      next(error)
+    }
+  },
 
-            await updateProject.update({
-                    title,
-                    description,
-                    category,
-                    image,
-                    valuetion,
-                    address,
-                    goal,
-                    balance,
-                    date_limit,
-                    account,
-                    id
-                })
+  //Update projects
+  async update(req, res, next) {
+    try {
+      const {
+        title,
+        description,
+        category,
+        image,
+        valuetion,
+        address,
+        goal,
+        balance,
+        date_limit,
+        account,
+      } = req.body
 
-            return res.send()
-        } catch (error) {
-            next(error)
-        }
-    },
+      const { id } = req.params
 
-    //Delete Projects
-    async delete(req, res, next) {
-        try {
-            const { id } = req.params
-            
-            await deleteProjectService.delete({ id })
-             
-            return res.send()
-        } catch (error) {
-            next(error)
-        }
-    } 
+      await updateProject.update({
+        title,
+        description,
+        category,
+        image,
+        valuetion,
+        address,
+        goal,
+        balance,
+        date_limit,
+        account,
+        id
+      })
+
+      return res.send()
+    } catch (error) {
+      next(error)
+    }
+  },
+
+  //Delete Projects
+  async delete(req, res, next) {
+    try {
+      const { id } = req.params
+
+      await deleteProjectService.delete({ id })
+
+      return res.send()
+    } catch (error) {
+      next(error)
+    }
+  }
 }

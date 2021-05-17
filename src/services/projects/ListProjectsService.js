@@ -2,7 +2,7 @@ const knex = require('../../database');
 
 module.exports = {
 
-    async index() {
+  async index() {
     const projects = await knex('projects')
     return projects
   },
