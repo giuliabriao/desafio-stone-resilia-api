@@ -10,7 +10,7 @@ exports.seed = function(knex) {
           description: "Projeto resilia + stone",
           category:"startup",
           image: "",
-          valuetion:100000,
+          valuation:100000,
           address:"Brasil",
           goal: 10000,
           balance: 0,
