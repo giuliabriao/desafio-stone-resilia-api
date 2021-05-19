@@ -4,9 +4,9 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: "stone",
+      database: "SEU_DATABASE_AQUI",
       user: "postgres",
-      password: "2198347465",
+      password: "SUA_SENHA_AQUI",
     },
     migrations: {
       tableName: "knex_migrations",

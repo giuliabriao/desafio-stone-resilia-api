@@ -8,7 +8,8 @@ const sessionsRoutes = require('./session');
 //routes
 routes.use('/users', usersRoutes);
 routes.use('/projects', projectsRoutes);
-routes.use('/transacions', transactionsRoutes);
+routes.use('/transactions', transactionsRoutes);
 routes.use('/sessions', sessionsRoutes);
+
 
 module.exports = routes
