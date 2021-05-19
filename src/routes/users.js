@@ -3,11 +3,11 @@ const routes = express.Router();
 const UserController = require('../controllers/UserController');
 const auth = require('../middlewares/isAuthenticated');
 
-routes.use(auth.isAuthenticated)
+//routes.use(auth.isAuthenticated)
 routes
   .get('/', UserController.index)
   .post('/', UserController.create)
-  .put('/:id', UserController.update)
-  .delete('/:id', UserController.delete)
+  .put('/:id',auth.isAuthenticated, UserController.update)
+  .delete('/:id',auth.isAuthenticated, UserController.delete)
 
 module.exports = routes
