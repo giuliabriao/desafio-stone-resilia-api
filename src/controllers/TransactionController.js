@@ -1,6 +1,7 @@
 
 const createTransaction = require('../services/transactions/CreateTransactionService');
 const listTransaction = require('../services/transactions/ListTransactionService');
+const validate = require('../services/transactions/TransactionValidationService');
 
 module.exports = {
 
@@ -18,6 +19,7 @@ module.exports = {
   async create(req, res, next) {
 
     try {
+
       const {
         value,
         date,
@@ -25,16 +27,24 @@ module.exports = {
         receptor,
       } = req.body
 
-      createTransaction.create({
-        value,
-        date,
-        sender,
-        receptor,
-      })
-      return res.status(201).send()
+      const validationErrors = await validate(req.body)
+
+      if (validationErrors.length > 0) {
+        return res.status(422).send(validationErrors)
+      } else {
+
+        await createTransaction.create({
+          value,
+          date,
+          sender,
+          receptor,
+        })
+
+        return res.status(201).send("Tudo certo!")
+      }
+
     } catch (error) {
       next(error)
     }
   },
-
 }
