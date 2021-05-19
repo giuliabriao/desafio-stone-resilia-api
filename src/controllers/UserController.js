@@ -29,7 +29,7 @@ module.exports = {
         password
       } = req.body
 
-      createUser.create({
+      await createUser.create({
         firstName,
         lastName,
         username,

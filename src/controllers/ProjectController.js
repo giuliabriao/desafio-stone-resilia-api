@@ -1,4 +1,3 @@
-const knex = require('../database');
 const listProjects = require('../services/projects/ListProjectsService');
 const createProject = require('../services/projects/CreateProjectsService');
 const updateProject = require('../services/projects/UpdateProject');
@@ -20,7 +19,7 @@ module.exports = {
   async create(req, res, next) {
 
     try {
-      const {
+      const{
         title,
         description,
         category,
