@@ -6,7 +6,7 @@ async function allowInvestmentInProject(params) { //Projeto ñ pode receber mais
         .where('id', params.receptor)
 
     if (tableProjects[0].balance > tableProjects[0].goal) {
-        return "Não pode receber mais do que a meta"
+        return {message: "Não pode receber mais do que a meta"}
     }
 }
 
@@ -15,7 +15,7 @@ async function allowInvestmentFromUser(params) { //Usuário quer doar mais do qu
         .where('id', params.sender)
 
     if (tableUsers[0].balance < params.value) {
-        return "Não pode doar mais do que tem de saldo"
+        return {message: "Não pode doar mais do que tem de saldo"}
     }
 }
 

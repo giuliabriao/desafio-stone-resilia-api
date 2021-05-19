@@ -40,7 +40,7 @@ module.exports = {
           receptor,
         })
 
-        return res.status(201).send("Tudo certo!")
+        return res.status(201).json({message: "Tudo certo!"}).send()
       }
 
     } catch (error) {
