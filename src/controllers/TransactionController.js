@@ -8,8 +8,11 @@ module.exports = {
   // List transaction
   async index(req, res, next) {
     try {
-      const transactions = await listTransaction.index()
-      return res.json(transactions)
+      const {sender, receptor} = req.query
+
+      const transactions = await listTransaction.index(sender, receptor)
+      return res.json(transactions);
+
     } catch (error) {
       next(error)
     }
