@@ -1,5 +1,6 @@
 const createUser = require('../services/users/CreateUserService');
 const listUser = require('../services/users/ListUserService');
+const meUser = require('../services/users/MeService');
 const updateUser = require('../services/users/UpdateUserService');
 const deleteUser = require('../services/users/DeleteUsers');
 
@@ -10,6 +11,20 @@ module.exports = {
     try {
       const users = await listUser.index()
       return res.json(users)
+    } catch (error) {
+      next(error)
+    }
+  },
+
+  async me(req, res, next) {
+    try {
+      const { username } = req.query;
+
+      const user = await meUser.me(username)
+    
+      return res.json(user)
+
+
     } catch (error) {
       next(error)
     }
