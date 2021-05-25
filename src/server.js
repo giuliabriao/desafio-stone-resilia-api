@@ -1,8 +1,11 @@
 const express = require('express');
 let routes = require('./routes');
+const cors = require('cors');
+
 
 const app = express();
 app.use(express.json()) //aqui ele vai receber o body no tipo json la no post
+app.use(cors())
 app.use(routes)
 
 //Not found
