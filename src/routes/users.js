@@ -6,7 +6,7 @@ const auth = require('../middlewares/isAuthenticated');
 //routes.use(auth.isAuthenticated)
 routes
   .get('/', UserController.index)
-  .get('/me', UserController.me)
+  .get('/me',auth.isAuthenticated, UserController.me)
   .post('/', UserController.create)
   .put('/:id',auth.isAuthenticated, UserController.update)
   .delete('/:id',auth.isAuthenticated, UserController.delete)

@@ -5,8 +5,8 @@ module.exports = {
   async index(user_id, category, page) {
     
     const projects = knex('projects')
-      .limit(5)
-      .offset((page - 1) * 5)
+      .limit(8)
+      .offset((page - 1) * 8)
 
     if(user_id){
       projects
