@@ -1,41 +1,64 @@
-<!--ts-->
-   * [Sobre](#Sobre)
-   * [Require](#Require)
-   * [Usage](#Usage)
-     * [Users](#Users)
-     * [Projects](#Projects)
-     * [Transactions](#Transactions)
-     * [Sessions](#Sessions)
-   * [Techs](#Techs)
-<!--te-->
+## Invest em Mim.
 
-# ⚙️ Requirements
+
+![logo](https://user-images.githubusercontent.com/51389902/119927784-84b9f380-bf50-11eb-894c-d024688bed2a.png)
+
+
+
+INVEST EM MIM is an investment platform whose mission is to stimulate the financial independence of the investor and encourage the realization of grandiose projects.
+Fintech INVEST EM MIM innovates the investment market, bringing to Brazil the possibility of fractional investments. Unlike other platforms, at INVEST EM MIM the buyer can invest the amount he wants, not being limited to the value of the quota.
+We treat each project as an investment, with financial or welfare returns. We have five types of investment: startups, local, social and environmental commerce.
+We also innovate with the investment possibilities, in INVEST EM MIM it is possible to invest with currency, cashback, miles and cryptocurrencies, giving a greater possibility of success for the platform.
+ 
+
+
+# Minimum requirements 🔐
+
+ - Register new users.
+ - Authenticate new users.
+ - Check if users are registered in the user table.
+ - If so, return ok and store in the browser the information that signals that the user is logged in (cookies or localStorage).
+ - If not, warn the user that the information is not correct.
+ - Register, edit, delete new projects.
+ - View projects registered by a user.
+ - List all registered projects on a homepage.
+ - Detail a project and enable contribution.
+
+ # Technology ⚒📚 
+
+ - [Express](https://expressjs.com/pt-br/)
+ - [Knex](http://knexjs.org/) 
+ - [Bcrypt](https://www.npmjs.com/package/bcrypt)
+ - [JWT](https://jwt.io/)
+ - [NodeJs](https://nodejs.org/en/)
+
+
+# Requirements ⚙️
 
 - [Git](https://git-scm.com/) installed
 - [Node](https://node.js.org/) installed
 - [PostegreSQL](https://www.postgresql.org/) installed
 - Npm or [Yarn](https://yarnpkg.com/) installed
 
-# 📦 Install dependencies
+# Install dependencies 📦 
 - Run `npm install` or `yarn install`.
 
-# 🔨 Usage
+# Usage 🔨
 - Run `npm start` or `yarn start`.
 - Base URL: https://localhost:3333
 
-
-# 👨🏻‍💻 Users
+# Users 👨🏻‍💻 
 ### Features
 - [x] List all users
 - [X] Create new user
 - [X] Update infos users
 - [X] Delete user
 
-#### List All Users
+#### List All Users :
 - `Path: /users`
 - Method: [GET] 
 
-#### Create new User
+#### Create new User :
 - `Path: /users`
 - Method: [POST] 
 
@@ -52,7 +75,7 @@ Body
 }
 ```
 
-#### Update User
+#### Update User :
 - `Path: /users/user-id`
 - Method: [PUT] 
 
@@ -67,24 +90,24 @@ Body
 }
 ```
 
-#### Delete User
+#### Delete User :
 `Path: /users/user-id`
 Method: [DELETE]
 
 
 
-# 🗄 Projects
+# Projects 🗄 
 ### Features
 - [x] List all projects
 - [X] Create new projects
 - [X] Update infos projects
 - [X] Delete projects
 
-#### List All Projects
+#### List All Projects :
 - `Path: /projects`
 - Method: [GET] 
 
-#### Create new User
+#### Create new User :
 - `Path: /projects`
 - Method: [POST] 
 
@@ -105,7 +128,7 @@ Body
 }
 ```
 
-#### Update Project
+#### Update Project :
 - `Path: /project/project-id`
 - Method: [PUT] 
 
@@ -122,23 +145,23 @@ Body
 }
 ```
 
-#### Delete Project
+#### Delete Project :
 `Path: /project/project-id`
 Method: [DELETE]
 
 
 
 
-# 💰 Transactions
+# Transactions 💰
 ### Features
 - [x] List all Transactions
 - [X] Create new Transaction
 
-#### List All Transactions
+#### List All Transactions :
 - `Path: /transacions`
 - Method: [GET] 
 
-#### Create new Transaction
+#### Create new Transaction :
 - `Path: /transacions`
 - Method: [POST] 
 
@@ -152,11 +175,10 @@ Body
 }
 ```
 
-# Techs
 
- - [Express](https://expressjs.com/pt-br/)
- - [Knex](http://knexjs.org/) 
- - [Bcrypt](https://www.npmjs.com/package/bcrypt)
- - [JWT](https://jwt.io/)
- - [JavaScript](https://www.javascript.com/)
+# Authors 📚 
 
+- [Bruno Sampaio](https://github.com/BrunoSampaioDev)
+- [Giulia Brião](https://github.com/giuliabriao)
+- [Adriano Oscar](https://github.com/Adrianooscar)
+- [Carlos Trajano](https://github.com/CarllosT)
