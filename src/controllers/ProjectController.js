@@ -10,6 +10,9 @@ module.exports = {
       const { user_id, category, page = 1 } = req.query;
 
       const projects = await listProjects.index(user_id, category, page);
+      const { user_id, category, page = 1, id } = req.query;
+
+      const projects = await listProjects.index(user_id, category, page, id);
 
       res.header("X-Total-Count", projects.count["count"]);
       return res.json(projects.results);
