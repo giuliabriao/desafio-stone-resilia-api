@@ -7,9 +7,6 @@ module.exports = {
   //List projects
   async index(req, res, next) {
     try {
-      const { user_id, category, page = 1 } = req.query;
-
-      const projects = await listProjects.index(user_id, category, page);
       const { user_id, category, page = 1, id } = req.query;
 
       const projects = await listProjects.index(user_id, category, page, id);
