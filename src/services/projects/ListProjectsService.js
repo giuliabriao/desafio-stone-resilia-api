@@ -2,7 +2,7 @@ const knex = require('../../database');
 
 module.exports = {
 
-  async index(user_id, category, page) {
+  async index(user_id, category, page, id) {
     
     const projects = knex('projects')
       .limit(8)
@@ -18,6 +18,11 @@ module.exports = {
     if(category){
       projects
         .where({category})
+    }
+
+    if(id){
+      projects
+        .where({id})
     }
 
     const [count] = await knex('projects').count()
