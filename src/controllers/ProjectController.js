@@ -2,6 +2,7 @@ const listProjects = require("../services/projects/ListProjectsService");
 const createProject = require("../services/projects/CreateProjectsService");
 const updateProject = require("../services/projects/UpdateProject");
 const deleteProjectService = require("../services/projects/DeleteProjectService");
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   //List projects
@@ -45,7 +46,7 @@ module.exports = {
         goal,
         balance,
         date_limit,
-        account,
+        account: uuidv4(),
         user_id,
       });
 
