@@ -175,6 +175,22 @@ Body
 }
 ```
 
+# Sessions 
+### Features
+- [X] Create new Session
+
+#### Create new Session :
+- `Path: /sessions`
+- Method: [POST] 
+
+Body 
+```json
+{
+  "email":"email@email.com",
+  "password":"mypassword"
+}
+```
+
 
 # Authors 📚 
 
