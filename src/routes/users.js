@@ -1,14 +1,67 @@
-const express = require('express');
+const express = require("express");
 const routes = express.Router();
-const UserController = require('../controllers/UserController');
-const auth = require('../middlewares/isAuthenticated');
+const UserController = require("../controllers/UserController");
+const auth = require("../middlewares/isAuthenticated");
+const { celebrate, Joi, Segments } = require("celebrate");
 
 //routes.use(auth.isAuthenticated)
 routes
-  .get('/', UserController.index)
-  .get('/me',auth.isAuthenticated, UserController.me)
-  .post('/', UserController.create)
-  .put('/:id',auth.isAuthenticated, UserController.update)
-  .delete('/:id',auth.isAuthenticated, UserController.delete)
+  .get("/", UserController.index)
+  .get(
+    "/me",
+    celebrate({
+      [Segments.QUERY]: {
+        username: Joi.string().required(),
+      },
+    }),
+    auth.isAuthenticated,
+    UserController.me
+  )
 
-module.exports = routes
+  .post(
+    "/",
+    celebrate({
+      [Segments.BODY]: Joi.object().keys({
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        username: Joi.string().required(),
+        avatar: Joi.string().default(null),
+        email: Joi.string().required(),
+        birth: Joi.string().required(),
+        password: Joi.string().required(),
+      }),
+    }),
+    UserController.create
+  )
+  .put(
+    "/:id",
+    celebrate({
+      [Segments.BODY]: Joi.object().keys({
+        firstName: Joi.string(),
+        lastName: Joi.string(),
+        username: Joi.string(),
+        avatar: Joi.string(),
+        email: Joi.string(),
+        birth: Joi.string(),
+        password: Joi.string(),
+      }),
+      [Segments.PARAMS]: {
+        id: Joi.number().required(),
+      },
+    }),
+    auth.isAuthenticated,
+    UserController.update
+  )
+
+  .delete(
+    "/:id",
+    celebrate({
+      [Segments.PARAMS]: {
+        id: Joi.number().required(),
+      },
+    }),
+    auth.isAuthenticated,
+    UserController.delete
+  );
+
+module.exports = routes;
