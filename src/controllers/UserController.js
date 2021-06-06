@@ -17,7 +17,7 @@ module.exports = {
 
   async me(req, res, next) {
     try {
-      const { username } = req.query;
+      const { username } = req.user;
 
       const user = await meUser.me(username);
 
@@ -73,7 +73,7 @@ module.exports = {
 
   async updateAvatar(req, res, next) {
     try {
-      const { id } = req.params;
+      const { id } = req.user;
       const { url } = req.file;
       await updateAvatar.update(url, id);
 

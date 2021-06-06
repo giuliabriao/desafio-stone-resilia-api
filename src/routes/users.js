@@ -12,16 +12,7 @@ const upload = multer({ uploadConfig });
 routes
   .get("/", UserController.index)
 
-  .get(
-    "/me",
-    celebrate({
-      [Segments.QUERY]: {
-        username: Joi.string().required(),
-      },
-    }),
-    auth.isAuthenticated,
-    UserController.me
-  )
+  .get("/me", auth.isAuthenticated, UserController.me)
 
   .post(
     "/",
@@ -60,7 +51,7 @@ routes
   )
 
   .patch(
-    "/avatar/:id",
+    "/avatar",
     auth.isAuthenticated,
     upload.single("avatar"),
     uploadAvatar,
