@@ -6,7 +6,7 @@ module.exports = {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
-      return res.status(401).json({ message: "JWT Token i missing" });
+      return res.status(401).json({ message: "JWT Token is missing" });
     }
 
     const token = authHeader.split(" ")[1];

@@ -31,7 +31,7 @@ routes
   )
 
   .put(
-    "/:id",
+    "/",
     celebrate({
       [Segments.BODY]: Joi.object().keys({
         firstName: Joi.string(),
@@ -42,9 +42,6 @@ routes
         birth: Joi.string(),
         password: Joi.string(),
       }),
-      [Segments.PARAMS]: {
-        id: Joi.number().required(),
-      },
     }),
     auth.isAuthenticated,
     UserController.update
@@ -58,15 +55,6 @@ routes
     UserController.updateAvatar
   )
 
-  .delete(
-    "/:id",
-    celebrate({
-      [Segments.PARAMS]: {
-        id: Joi.number().required(),
-      },
-    }),
-    auth.isAuthenticated,
-    UserController.delete
-  );
+  .delete("/", auth.isAuthenticated, UserController.delete);
 
 module.exports = routes;

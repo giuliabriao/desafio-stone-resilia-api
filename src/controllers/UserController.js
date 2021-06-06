@@ -52,7 +52,7 @@ module.exports = {
       const { firstName, lastName, username, avatar, email, birth, password } =
         req.body;
 
-      const { id } = req.params;
+      const { id } = req.user;
 
       await updateUser.update({
         firstName,
@@ -85,7 +85,7 @@ module.exports = {
 
   async delete(req, res, next) {
     try {
-      const { id } = req.params;
+      const { id } = req.user;
       await deleteUser.delete({ id });
 
       return res.send();
