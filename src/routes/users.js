@@ -3,10 +3,15 @@ const routes = express.Router();
 const UserController = require("../controllers/UserController");
 const auth = require("../middlewares/isAuthenticated");
 const { celebrate, Joi, Segments } = require("celebrate");
+const multer = require("multer");
+const uploadConfig = require("../config/upload");
+const uploadAvatar = require("../services/firebase/firebase");
 
-//routes.use(auth.isAuthenticated)
+const upload = multer({ uploadConfig });
+
 routes
   .get("/", UserController.index)
+
   .get(
     "/me",
     celebrate({
@@ -33,6 +38,7 @@ routes
     }),
     UserController.create
   )
+
   .put(
     "/:id",
     celebrate({
@@ -51,6 +57,14 @@ routes
     }),
     auth.isAuthenticated,
     UserController.update
+  )
+
+  .patch(
+    "/avatar/:id",
+    auth.isAuthenticated,
+    upload.single("avatar"),
+    uploadAvatar,
+    UserController.updateAvatar
   )
 
   .delete(
